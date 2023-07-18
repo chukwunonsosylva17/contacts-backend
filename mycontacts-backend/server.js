@@ -1,16 +1,8 @@
-const  express = require ("express");
-const errorHandler = require("./middleware/errorHandler");
-const connectDb = require("./cofig/dbConnection");
+require('express-async-errors');
 const dotenv = require("dotenv").config();   
-
-connectDb();
-const app = express();
+const app = require("./app");
 
 const port = process.env.PORT || 5000;
-
-app.use(express.json());
-app.use("/api/contacts", require("./routes/contactRoutes"));
-app.use(errorHandler);
 app.listen(port,() => { 
     console.log(`Server running on port ${port}`);
 });
