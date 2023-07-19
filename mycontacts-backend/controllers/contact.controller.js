@@ -5,7 +5,7 @@ const { CreateContactSchema} = require("../schemas/contact.schema");
 class ContactController {
   async getContacts(req, res) {
     console.log("The request body is");
-    const contacts = await Contact.find();
+    const contacts = await Contact.find({ user_id: req.user.id });
     res.status(200).json(contacts);
   };
 
